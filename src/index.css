@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.mainWindow{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  font-family: 'Roboto';
+}
