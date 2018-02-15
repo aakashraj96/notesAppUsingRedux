@@ -1,9 +1,0 @@
-.field1{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-button{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}

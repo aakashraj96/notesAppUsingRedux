@@ -1,12 +1,7 @@
-.taskInput {
+.inputStyle{
   flex-grow: 1;
   padding-left: 10px;
   padding-right: 10px;
   font-size: 25px;
   padding: 5px 5px 5px 5px;
-}
-.field2{
-  display: flex;
-  flex-direction: row;
-
 }

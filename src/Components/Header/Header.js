@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Header.css';
+import H2Text from '../H2Text/H2Text.js';
 
 export default class Header extends React.Component {
   render() {
     return (
       <header>
-        <h2 className="headerH2"> Start taking notes </h2>
+        <H2Text text="Start taking notes" />
       </header>
     );
   }

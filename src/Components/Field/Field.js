@@ -1,13 +1,12 @@
 import React from 'react';
-import './Field1.css';
+import './Field.css';
 
 
 export default class Field1 extends React.Component {
   render() {
     return (
-      <div className="field1">
-        <h2> Note Title </h2>
-        <button type="button"> en </button>
+      <div className="field">
+        {this.props.children}
       </div>
     );
   }

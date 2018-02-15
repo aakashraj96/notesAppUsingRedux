@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Header from './Header';
-import Footer from './Footer';
-import Form from './Form';
+import Header from './Components/Header/Header.js';
+import Footer from './Components/Footer/Footer.js';
+import Form from './Components/Form/Form.js';
 
-class MainWindow extends React.Component {
+export default class MainWindow extends React.Component {
   render() {
     return (
       <div className="mainWindow">
-        <Header />
-        <Form />
+        <Header text="Start taking notes" />
+        <Form url="http://127.0.0.1:6000/saveNote" method="post"/>
         <Footer />
       </div>
     );

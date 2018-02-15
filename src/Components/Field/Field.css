@@ -1,5 +1,5 @@
-.field5{
-  display:flex;
+.field{
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
