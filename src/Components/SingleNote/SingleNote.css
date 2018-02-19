@@ -6,5 +6,4 @@
 .noteContainer{
 background-color: #E9E9EF;
 flex-grow:1;
-overflow-y: scroll;
 }
