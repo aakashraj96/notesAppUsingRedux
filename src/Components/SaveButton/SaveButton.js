@@ -6,14 +6,25 @@ import actions from '../../redux/actions/';
 
 
 const SaveButton = props => (
-  <button type="button" onClick={props.updateBoth}><h2 className="buttonText">Save</h2></button>
+  <button
+    type="button"
+    onClick={() => {
+      const obj = {
+        title: props.accessTitle(),
+        note: props.accessNote(),
+        id: props.accessId(),
+      };
+      props.updateBoth(obj);
+      props.formReset();
+  }}
+  ><h2 className="buttonText">Save</h2>
+  </button>
 );
 
 
 const mapDispatchToProps = dispatch => ({
-  updateBoth: () => {
-    dispatch(actions.updateTitleArray());
-    dispatch(actions.updateNoteArray());
+  updateBoth: (obj) => {
+    dispatch(actions.updateNotes(obj));
     dispatch(actions.changePage(1));
   },
 });

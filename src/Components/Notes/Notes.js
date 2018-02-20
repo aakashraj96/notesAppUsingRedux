@@ -5,28 +5,30 @@ import { connect } from 'react-redux';
 
 const Notes = (props) => {
   console.log('rerendering text box');
-  const notes = props.notesArray.map((note, i) => {
-    console.log('Title array', props.titleArray[i]);
-    return (
-      <SingleNote
-        key={i}
-        title={props.titleArray[i]}
-        note={note}
-        id={i}
-      />
-    );
-  });
+
+
+  const allNotes = Object.keys(props.notes).map(savedKey => (
+    <SingleNote
+      key={savedKey}
+      title={props.notes[savedKey].title}
+      note={props.notes[savedKey].note}
+      id={savedKey}
+      updateNote={props.updateNote}
+      updateTitle={props.updateTitle}
+      updateId={props.updateId}
+    />
+  ));
+
   return (
     <div className="noteContainer">
-      {notes}
+      {allNotes}
     </div>
 
   );
 };
 
 const mapStateToProps = state => ({
-  notesArray: state.updater.notesArray,
-  titleArray: state.updater.titleArray,
+  notes: state.updater.notes,
 });
 
 export default connect(mapStateToProps)(Notes);

@@ -34,7 +34,7 @@ class Field4 extends React.Component {
           style={this.state.formStyle}
           id="noteArea"
           onChange={(event) => {
-          this.props.updateCurrentNote(event.target.value);
+          this.props.updateNote(event.target.value);
           if (event.target.value.length >= 149) {
             this.setState({
               formStyle: {
@@ -53,7 +53,14 @@ class Field4 extends React.Component {
           value={this.props.currentNote}
         />
         <Field>
-          <SaveButton />
+          <SaveButton
+            accessTitle={this.props.accessTitle}
+            accessNote={this.props.accessNote}
+            accessId={this.props.accessId}
+            updateNote={this.props.updateNote}
+            updateTitle={this.props.updateTitle}
+            formReset={this.props.formReset}
+          />
           <p> {150 - this.props.currentNote.length} </p>
         </Field>
       </div>
@@ -61,12 +68,12 @@ class Field4 extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentNote: state.updater.currentNote,
-});
-const mapDispatchtoProps = dispatch => ({
-  updateCurrentNote: (text) => {
-    dispatch(actions.updateCurrentNote(text));
-  },
-});
-export default connect(mapStateToProps, mapDispatchtoProps)(Field4);
+// const mapStateToProps = state => ({
+//   currentNote: state.updater.currentNote,
+// });
+// const mapDispatchtoProps = dispatch => ({
+//   updateCurrentNote: (text) => {
+//     dispatch(actions.updateCurrentNote(text));
+//   },
+// });
+export default Field4;

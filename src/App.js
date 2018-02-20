@@ -15,7 +15,9 @@ class MainWindow extends React.Component {
   constructor() {
     super();
     this.state = {
+      currentTitle: '',
       currentNote: '',
+      currentId: '',
       titles: [],
       notesTillNow: [],
       windowNumber: 0,
@@ -29,8 +31,33 @@ class MainWindow extends React.Component {
 
   updateTitle(value) {
     this.setState({ currentTitle: value });
-    // console.log(this.state.currentTitle);
   }
+
+  updateNote = (value) => {
+    this.setState({ currentNote: value });
+  }
+
+  updateId = (value) => {
+    this.setState({ currentId: value });
+  }
+
+  formReset = () => {
+    this.setState({ currentTitle: '', currentNote: '', currentId: '' });
+  }
+
+  accessNote = () => this.state.currentNote
+
+  accessTitle = () => this.state.currentTitle
+
+  accessId = () => {
+    if (this.state.currentId === '') {
+      const tempId = Date.now();
+      this.setState({ currentId: tempId });
+      return tempId;
+    }
+    return this.state.currentId;
+  }
+
 
   modifyNote = (id) => {
     const tempArray = this.state.titles;
@@ -75,9 +102,14 @@ class MainWindow extends React.Component {
         <div className="mainWindow">
           <Header text="Start taking notes" />
           <Form
-            updateArray={this.updateArray}
+            updateNote={this.updateNote}
             updateTitle={this.updateTitle}
             currentNote={this.state.currentNote}
+            currentTitle={this.state.currentTitle}
+            accessNote={this.accessNote}
+            accessTitle={this.accessTitle}
+            accessId={this.accessId}
+            formReset={this.formReset}
           />
           <Footer />
         </div>
@@ -89,7 +121,11 @@ class MainWindow extends React.Component {
 
         <div className="mainWindow">
           <Header text="Saved Notes" />
-          <Notes />
+          <Notes
+            updateNote={this.updateNote}
+            updateTitle={this.updateTitle}
+            updateId={this.updateId}
+          />
           <CreateNote />
         </div>
 
@@ -105,4 +141,3 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(MainWindow);
 // ========================================
-

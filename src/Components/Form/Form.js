@@ -20,13 +20,21 @@ const Form = props =>
           type="text"
           name="tasks"
           updateTitle={props.updateTitle}
+          currentTitle={props.currentTitle}
         />
       </Field>
       <Field>
         <p><i>Please type your note below </i></p>
       </Field>
 
-      <Textarea updateArray={props.updateArray} currentNote={props.currentNote} />
+      <Textarea
+        updateNote={props.updateNote}
+        currentNote={props.currentNote}
+        accessNote={props.accessNote}
+        accessTitle={props.accessTitle}
+        formReset={props.formReset}
+        accessId={props.accessId}
+      />
 
     </form>
   );

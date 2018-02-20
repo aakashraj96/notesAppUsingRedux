@@ -1,19 +1,11 @@
 const defaultState = {
-  currentTitle: '',
-  titleArray: [],
-  currentNote: '',
-  notesArray: [],
+  notes: {},
   pageNumber: 0,
+
 };
 
 export default (prevstate = defaultState, action) => {
   switch (action.type) {
-    case 'UPDATETITLE': {
-      return {
-        ...prevstate,
-        currentTitle: action.payload,
-      };
-    }
     case 'UPDATETITLEARRAY': {
       console.log('The TITLE ARRAY is: ', prevstate.titleArray);
       return {
@@ -22,12 +14,7 @@ export default (prevstate = defaultState, action) => {
         currentTitle: '',
       };
     }
-    case 'UPDATENOTE': {
-      return {
-        ...prevstate,
-        currentNote: action.payload,
-      };
-    }
+
     case 'UPDATENOTEARRAY': {
       console.log('The NOTE ARRAY is: ', prevstate.notesArray);
       return {
@@ -59,6 +46,19 @@ export default (prevstate = defaultState, action) => {
         titleArray: tempTitleArray,
         notesArray: tempNoteArray,
         pageNumber: 0,
+      };
+    }
+    case 'UPDATENOTES': {
+      console.log('THE OBJECT IS: ', prevstate.notes);
+      const temp = Object.assign({}, prevstate.notes, {
+        [action.payload.id]: {
+          title: action.payload.title,
+          note: action.payload.note,
+        },
+      });
+      return {
+        ...prevstate,
+        notes: temp,
       };
     }
     default:
